@@ -3,7 +3,7 @@
 
 ## Installation
 ```sh
-git clone --separate-git-dir=$HOME/.dotfiles https://github.com/tomnnnn/dotfiles.git dotfiles-tmp
+git clone --recurse-submodules --separate-git-dir=$HOME/.dotfiles https://github.com/tomnnnn/dotfiles.git dotfiles-tmp
 rsync --recursive --verbose --exclude '.git' dotfiles-tmp/ $HOME/
 rm -r dotfiles-tmp
 ```
