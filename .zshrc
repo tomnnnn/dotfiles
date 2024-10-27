@@ -1,22 +1,29 @@
+ZSH_CUSTOM="$HOME/.zsh"
 # Plugins directory
 PLUGINS_DIR="$HOME/.zsh/plugins"
 
 # List of plugins
 plugins=(
-  # git clone --depth 1 git@github.com:zsh-users/zsh-syntax-highlighting.git $PLUGINS_DIR/zsh-syntax-highlighting
-  "zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-  # git clone --depth 1 git@github.com:marlonrichert/zsh-autocomplete.git $PLUGINS_DIR/zsh-autocomplete
-  "zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-  # git clone --depth 1 git@github.com:zsh-users/zsh-autosuggestions.git $PLUGINS_DIR/zsh-autosuggestions
-  "zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+  "zsh-users/zsh-syntax-highlighting"
+  "marlonrichert/zsh-autocomplete"
+  "zsh-users/zsh-autosuggestions"
 )
 
 # Report missing plugins
+missing_plugins=()
 for plugin in "${plugins[@]}"; do
-  if [[ ! -f $PLUGINS_DIR/$plugin ]]; then
+  # change $plugin to the plugin name without the username
+  plugin=$(echo $plugin | cut -d'/' -f2)
+
+  if [[ ! -d "$PLUGINS_DIR/$plugin" ]]; then
+    missing_plugins+=("$plugin")
     echo "Warning: plugin $plugin not found."
   fi
 done
+
+if [[ ${#missing_plugins[@]} -gt 0 ]]; then
+  echo "Run 'zsh-install' to install missing plugins."
+fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -38,7 +45,9 @@ source_if_exists() {
 
 # Source all plugins from the .zsh folder
 for plugin in "${plugins[@]}"; do
-  source_if_exists "$PLUGINS_DIR/$plugin"
+  # change to the plugin name without the username
+  plugin=$(echo $plugin | cut -d'/' -f2)
+  source_if_exists "$PLUGINS_DIR/$plugin/$plugin.plugin.zsh"
 done
 
 # colorful ls
@@ -49,5 +58,16 @@ bindkey '^e' autosuggest-accept
 bindkey              '^I'         menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
 
+# install missing plugins command
+zsh-install() {
+  for plugin in "${missing_plugins[@]}"; do
+    # change to the plugin name without the username
+    plugin_name=$(echo $plugin | cut -d'/' -f2)
+
+    if [[ ! -d "$PLUGINS_DIR/$plugin" ]]; then
+      git clone "git@github.com:"$plugin "$PLUGINS_DIR/$plugin_name"
+    fi
+  done
+}
 
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
