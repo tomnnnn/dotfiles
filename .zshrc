@@ -69,6 +69,10 @@ zsh-install() {
       git clone --depth 1 $repo "$PLUGINS_DIR/$plugin_name"
     fi
   done
+
+  # reload zsh
+  echo "Reloading zsh..."
+  exec zsh
 }
 
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
