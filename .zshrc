@@ -3,8 +3,11 @@ PLUGINS_DIR="$HOME/.zsh/plugins"
 
 # List of plugins
 plugins=(
+  # git clone --depth 1 git@github.com:zsh-users/zsh-syntax-highlighting.git $PLUGINS_DIR/zsh-syntax-highlighting
   "zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  # git clone --depth 1 git@github.com:marlonrichert/zsh-autocomplete.git $PLUGINS_DIR/zsh-autocomplete
   "zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+  # git clone --depth 1 git@github.com:zsh-users/zsh-autosuggestions.git $PLUGINS_DIR/zsh-autosuggestions
   "zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 )
 
