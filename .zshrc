@@ -13,11 +13,11 @@ plugins=(
 missing_plugins=()
 for plugin in "${plugins[@]}"; do
   # change $plugin to the plugin name without the username
-  plugin=$(echo $plugin | cut -d'/' -f2)
+  plugin_name=$(echo $plugin | cut -d'/' -f2)
 
-  if [[ ! -d "$PLUGINS_DIR/$plugin" ]]; then
+  if [[ ! -d "$PLUGINS_DIR/$plugin_name" ]]; then
     missing_plugins+=("$plugin")
-    echo "Warning: plugin $plugin not found."
+    echo "Warning: plugin $plugin_name not found."
   fi
 done
 
@@ -65,7 +65,8 @@ zsh-install() {
     plugin_name=$(echo $plugin | cut -d'/' -f2)
 
     if [[ ! -d "$PLUGINS_DIR/$plugin" ]]; then
-      git clone "git@github.com:"$plugin "$PLUGINS_DIR/$plugin_name"
+      repo="git@github.com:${plugin}.git"
+      git clone --depth 1 $repo "$PLUGINS_DIR/$plugin_name"
     fi
   done
 }
