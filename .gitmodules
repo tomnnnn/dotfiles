@@ -1,3 +1,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:tomnnnn/config.nvim.git
+[submodule ".zsh/powerlevel10k"]
+	path = .zsh/powerlevel10k
+	url = git@github.com:romkatv/powerlevel10k.git
