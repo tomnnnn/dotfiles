@@ -1,0 +1,34 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "9a09505"
+hash = "1f3dad061209081a6b04dd6ff2cb06c7"
+
+[[flavor.deps]]
+use = "bennyyip/gruvbox-dark"
+rev = "b4cc9f2"
+hash = "f44c42bcbed3c8564100e45e2fe3649a"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "68326b4"
+hash = "2ac87e1b3a61f5887472899e86535d29"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:dracula"
+rev = "68326b4"
+hash = "53e1f10ae0f6abd406e463fceca8622a"
+
+[[flavor.deps]]
+use = "dangooddd/kanagawa"
+rev = "31167ed"
+hash = "a04e157148549bacbb2831aab0e6e8cb"
+
+[[flavor.deps]]
+use = "gosxrgxx/flexoki-light"
+rev = "9d53f85"
+hash = "4871da00f8c49c6ad3ba552652539199"
+
+[[flavor.deps]]
+use = "gosxrgxx/flexoki-dark"
+rev = "3e8cfba"
+hash = "56a96293138f09da7fae25ee405a4393"
