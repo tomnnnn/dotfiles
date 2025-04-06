@@ -120,3 +120,6 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+# zoxide
+eval "$(zoxide init --cmd j zsh)"
