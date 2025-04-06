@@ -1,0 +1,14 @@
+theme = MyGruvboxMaterial
+window-padding-x = 10
+window-padding-y = 10
+mouse-hide-while-typing = true
+macos-titlebar-style = transparent
+title = " "
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+cursor-style = block
+shell-integration-features = no-cursor
+bold-is-bright = true
+macos-window-shadow = false
+background-opacity = 0.95
+background-blur-radius = 20
