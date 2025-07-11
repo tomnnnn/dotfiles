@@ -56,7 +56,7 @@ for plugin in "${plugins[@]}"; do
 done
 
 # colorful ls
-alias ls='gls --color -h --group-directories-first'
+alias ls='ls --color=auto'
 
 # keybindings
 bindkey '^e' autosuggest-accept
