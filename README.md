@@ -7,7 +7,7 @@ These are my personal dotfiles managed with [GNU Stow](https://www.gnu.org/softw
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+   git clone https://github.com/tomnnnn/dotfiles ~/dotfiles
    cd ~/dotfiles
    ```
 
