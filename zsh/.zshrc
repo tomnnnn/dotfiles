@@ -10,13 +10,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 #### =========================================================
-####  Globals & paths
+####  Environment variables
 #### =========================================================
 
 ZSH_CUSTOM="$HOME/.zsh"
 PLUGINS_DIR="$ZSH_CUSTOM/plugins"
-
-export EDITOR="nvim"
 
 # Exports Management System
 # Taken from: https://github.com/pgaijin66/dotfiles/blob/main/zsh/zshrc
@@ -176,48 +174,5 @@ command -v zoxide >/dev/null && eval "$(zoxide init --cmd z zsh)"
 
 # fzf
 command -v fzf >/dev/null && source <(fzf --zsh)
-
-
-#### =========================================================
-####  Conda
-#### =========================================================
-
-__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' shell.zsh hook 2>/dev/null)"
-if [[ $? -eq 0 ]]; then
-  eval "$__conda_setup"
-elif [[ -f /opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh ]]; then
-  source /opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh
-else
-  export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-fi
-unset __conda_setup
-
-
-#### =========================================================
-####  Mamba
-#### =========================================================
-
-export MAMBA_EXE='/opt/homebrew/Caskroom/miniforge/base/bin/mamba'
-export MAMBA_ROOT_PREFIX="$HOME/.local/share/mamba"
-
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2>/dev/null)"
-if [[ $? -eq 0 ]]; then
-  eval "$__mamba_setup"
-else
-  alias mamba="$MAMBA_EXE"
-fi
-unset __mamba_setup
-
-
-#### =========================================================
-####  OS-specific
-#### =========================================================
-
-case "$(uname)" in
-  Darwin)
-    export CPATH=/opt/homebrew/include
-    export LIBRARY_PATH=/opt/homebrew/lib
-    ;;
-esac
 
 [ -f "/Users/tomn/.ghcup/env" ] && . "/Users/tomn/.ghcup/env" # ghcup-env
